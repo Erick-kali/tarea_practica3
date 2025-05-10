@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 1: Menú Desplegable</title>
+  <style>
+    ul { list-style: none; padding: 0; }
+    li { background: #5C9DBF; color: #fff; padding: 8px; cursor: pointer; position: relative; }
+    .submenu { display: none; position: absolute; top: 100%; left: 0; background: #eee; color: #000; padding: 0; }
+    .submenu li { padding: 6px; margin: 0; }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li id="principal">Opciones
+        <ul class="submenu">
+          <li>Opción 1</li>
+          <li>Opción 2</li>
+          <li>Opción 3</li>
+        </ul>
+      </li>
+      <li>Enlace 2</li>
+      <li>Enlace 3</li>
+    </ul>
+  </nav>
+
+  <script>
+    document.getElementById('principal').addEventListener('click', function(){
+      const sub = this.querySelector('.submenu');
+      sub.style.display = sub.style.display === 'block' ? 'none' : 'block';
+    });
+  </script>
+</body>
+</html>

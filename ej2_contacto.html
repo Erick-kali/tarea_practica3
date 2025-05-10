@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 2: Formulario de Contacto</title>
+  <style>
+    .error { color: red; font-size: 0.9em; }
+    label { display: block; margin: 8px 0; }
+  </style>
+</head>
+<body>
+  <form id="contactForm" action="#" novalidate>
+    <label>Nombre: <input type="text" id="nombre" required></label>
+    <span class="error" id="err-nombre"></span>
+
+    <label>Correo: <input type="email" id="email" required></label>
+    <span class="error" id="err-email"></span>
+
+    <label>Mensaje: <textarea id="mensaje" required></textarea></label>
+    <span class="error" id="err-mensaje"></span>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      let ok = true;
+      ['nombre','email','mensaje'].forEach(id => document.getElementById('err-'+id).textContent = '');
+      const n = document.getElementById('nombre').value.trim();
+      if (!n) { document.getElementById('err-nombre').textContent = 'Nombre requerido'; ok = false; }
+      const em = document.getElementById('email').value;
+      if (!/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/.test(em)) {
+        document.getElementById('err-email').textContent = 'Email inválido'; ok = false;
+      }
+      const m = document.getElementById('mensaje').value.trim();
+      if (!m) { document.getElementById('err-mensaje').textContent = 'Mensaje requerido'; ok = false; }
+      if (!ok) e.preventDefault();
+    });
+  </script>
+</body>
+</html>
